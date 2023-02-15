@@ -4,6 +4,7 @@ for rida in f:
     sammude_list.append(rida.strip())#loob iga failis olevale reale listis indeksi koha
 f.close()#paneb kinni faili
 print(sammude_list)
+
 #listi int failitüübiks tegemine
 with open('sammud.txt') as f:
     sammude_list = [ int(i) for i in f ]

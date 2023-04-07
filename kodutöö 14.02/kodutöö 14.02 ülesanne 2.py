@@ -7,9 +7,17 @@ print(f.read())
 for rida in f:
     kilpkonna_juhised.append(rida.strip)
 
-f.close()
+def joonista_kujund(kujund, kilpkonn):
+    for käsk in kujund:
+        if käsk[0] == "edasi":
+            kilpkonn.forward(int(käsk[1]))
+        elif käsk[0] == "tagasi":
+            kilpkonn.backward(int(käsk[1]))
+        elif käsk[0] == "paremale":
+            kilpkonn.right(int(käsk[1]))
+        elif käsk[0] == "vasakule":
+            kilpkonn.left(int(käsk[1]))
+
 print(kilpkonna_juhised)
 
 turtle.exitonclick()
-
-

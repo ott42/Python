@@ -1,29 +1,28 @@
 import pygame
 import random
 
-# Mängu seaded
-WIDTH = 640
-HEIGHT = 480
-FPS = 60
-BACKGROUND_COLOR = (240, 240, 240)
-BALL_SIZE = 20
-BALL_SPEED = 5
-PADDLE_WIDTH = 120
-PADDLE_HEIGHT = 20
-PADDLE_SPEED = 5
+BALL_SPEED = int(input("Vali palli kiirus: ")) #mängija saab palli liikumiskiiruse määrata
+BALL_SIZE = int(input("Vali palli suurus(vaikimisi 20): ")) #mängija saab palli suuruse määrata
+WIDTH = 640 # laius
+HEIGHT = 480 # kõrgus
+FPS = 60 # fps määraja
+BACKGROUND_COLOR = (240, 240, 240) # taustavärv
+PADDLE_WIDTH = 120 # lauajupi laius
+PADDLE_HEIGHT = 20 # lauajupi kõrgus
+PADDLE_SPEED = 7 # lauajupi liikumiskiirus
 
 # Initsialiseeri Pygame'i
-pygame.init()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Pall ja alus mäng")
-clock = pygame.time.Clock()
+pygame.init() # initsialiiserib
+screen = pygame.display.set_mode((WIDTH, HEIGHT)) #ekraani mood
+pygame.display.set_caption("Pall ja alus mäng") #ekraani nimi
+clock = pygame.time.Clock() #kell
 
 # Mängu elemendid
-ball = pygame.Rect(WIDTH / 2 - BALL_SIZE / 2, HEIGHT / 2 - BALL_SIZE / 2, BALL_SIZE, BALL_SIZE)
-ball_speed_x = BALL_SPEED * random.choice((1, -1))
-ball_speed_y = BALL_SPEED * random.choice((1, -1))
-paddle = pygame.Rect(WIDTH / 2 - PADDLE_WIDTH / 2, HEIGHT / 1.5, PADDLE_WIDTH, PADDLE_HEIGHT)
-paddle_speed = 0
+ball = pygame.Rect(WIDTH / 2 - BALL_SIZE / 2, HEIGHT / 2 - BALL_SIZE / 2, BALL_SIZE, BALL_SIZE) #loob mängu kujundi pall
+ball_speed_x = BALL_SPEED * random.choice((1, -1)) #palli liikumine x teljel
+ball_speed_y = BALL_SPEED * random.choice((1, -1)) #palli liikumine y teljel
+paddle = pygame.Rect(WIDTH / 2 - PADDLE_WIDTH / 2, HEIGHT / 1.5, PADDLE_WIDTH, PADDLE_HEIGHT) #loob mängu kujundi palk
+paddle_speed = 0 #palgi kiirus 
 
 # Mängu loop
 running = True
@@ -45,6 +44,7 @@ while running:
     # Liiguta palli
     ball.x += ball_speed_x
     ball.y += ball_speed_y
+
 
     # Põrkumine seintega
     if ball.right >= WIDTH or ball.left <= 0:
@@ -82,3 +82,4 @@ while running:
 
 # Lõpeta Pygame'i
 pygame.quit()
+
